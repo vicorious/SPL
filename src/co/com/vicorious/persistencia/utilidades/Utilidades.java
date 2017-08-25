@@ -2,6 +2,7 @@ package co.com.vicorious.persistencia.utilidades;
 
 import java.lang.reflect.Field;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -82,6 +83,9 @@ public abstract class Utilidades
 				if(campo.getType().getSimpleName().equalsIgnoreCase("LocalDate"))
 				{
 					valorCampo = LocalDate.parse(valorCampo.toString());
+				}else if(campo.getType().getSimpleName().equalsIgnoreCase("LocalDateTime"))
+				{
+					valorCampo = LocalDateTime.parse(valorCampo.toString());
 				}
 				
 				campo.set(objeto, valorCampo);
