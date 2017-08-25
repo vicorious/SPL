@@ -181,6 +181,32 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					metodo.setAccessible(true);
 					Object resultadoResulset = metodo.invoke(resultado, columna.nombre());
 					
+					if(columna.tipoDato() == TipoElementoDB.DATE)
+					{
+						LocalDate date = null;
+					
+						if(columna.formato() != null && !columna.formato().isEmpty())
+						{
+							date = LocalDate.parse(resultadoResulset.toString());
+						}else
+						{
+							try
+							{
+								SimpleDateFormat formato = new SimpleDateFormat(columna.formato());
+								String fechaformateada = formato.format(formato.parse(resultadoResulset.toString()));
+								date = LocalDate.parse(fechaformateada);
+								
+							}catch(ParseException ex)
+							{
+								throw new PersistenciaException("Error al formatear la fecha: "+resultadoResulset+" con formato: "+columna.formato());
+							}
+						}
+						
+						Utilidades.set(singular, campo.getName(), date);
+						
+						continue;
+					}
+					
 					//Muchos
 					if(muchos == null)
 					{
@@ -1425,7 +1451,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					int numerodecolumnasconsultadas = numerocamposarreglo - campos.length;
 					if(numerodecolumnasconsultadas < 0)
 					{
-						throw new PersistenciaException("No es posible incluir en el objeto a mapear, una columna mas grande que el tamaÃ±o del total de sus atributos:  Campos en el select: "+numerocamposarreglo+" Campos en la clase: "+mapeo[0].getName()+ " : "+campos.length);
+						throw new PersistenciaException("No es posible incluir en el objeto a mapear, una columna mas grande que el tamaño del total de sus atributos:  Campos en el select: "+numerocamposarreglo+" Campos en la clase: "+mapeo[0].getName()+ " : "+campos.length);
 					}
 					
 					int i = 0;//Maneja el indice del arreglo IMPORTANTE FUERA DEL CICLO DE LAS FILAS
