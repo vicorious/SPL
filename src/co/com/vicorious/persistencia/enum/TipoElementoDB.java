@@ -38,6 +38,7 @@ public enum TipoElementoDB
 	NUMBER(Types.NUMERIC, TipoElemento.INTEGER),
 	TEXT(Types.VARCHAR, TipoElemento.STRING),
 	DATE(Types.DATE, TipoElemento.STRING),
+	TIMESTAMP(Types.TIMESTAMP, TipoElemento.STRING),
 	DECIMAL(Types.DECIMAL, TipoElemento.DECIMAL),
 	VARCHAR(Types.VARCHAR, TipoElemento.STRING),
 	OBJETO(Types.JAVA_OBJECT, TipoElemento.STRING);
