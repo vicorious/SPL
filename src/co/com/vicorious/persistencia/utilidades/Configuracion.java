@@ -285,25 +285,25 @@ public class Configuracion
 		XmlTO xml = ConstructorXML.generarXMLTO();	
 		FileWriter escritorcredenciales = null;
 		try
-		{					
-			JAXBContext configuracion = JAXBContext.newInstance(ConfiguracionXML.class);			
-			Marshaller configuracionmar = configuracion.createMarshaller();
-			configuracionmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
-			JAXBContext defaultsjax = JAXBContext.newInstance(DefaultsXML.class);			
-			Marshaller defaultmar = defaultsjax.createMarshaller();
-			defaultmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
-			JAXBContext mensajesjax = JAXBContext.newInstance(MensajesXML.class);			
-			Marshaller mensajesmar = mensajesjax.createMarshaller();
-			mensajesmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
-			JAXBContext tipodbjax = JAXBContext.newInstance(TiposDBXML.class);
-			Marshaller tipodbmar = tipodbjax.createMarshaller();
-			tipodbmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
+		{											
 			if(getConfiguracionframework() == null ? yaexisten : false)
 			{
+				JAXBContext configuracion = JAXBContext.newInstance(ConfiguracionXML.class);			
+				Marshaller configuracionmar = configuracion.createMarshaller();
+				configuracionmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				JAXBContext defaultsjax = JAXBContext.newInstance(DefaultsXML.class);			
+				Marshaller defaultmar = defaultsjax.createMarshaller();
+				defaultmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				JAXBContext mensajesjax = JAXBContext.newInstance(MensajesXML.class);			
+				Marshaller mensajesmar = mensajesjax.createMarshaller();
+				mensajesmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				JAXBContext tipodbjax = JAXBContext.newInstance(TiposDBXML.class);
+				Marshaller tipodbmar = tipodbjax.createMarshaller();
+				tipodbmar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+								
 				configuracionmar.marshal(xml.getConfiguracion_xml(), configuraciones);
 				defaultmar.marshal(xml.getDefaults_xml(), defaults);
 				mensajesmar.marshal(xml.getMensajes_xml(), mensajes);
@@ -318,7 +318,8 @@ public class Configuracion
 		{
 			try
 			{
-				escritorcredenciales.close();
+				if(escritorcredenciales != null)
+					escritorcredenciales.close();
 			}catch(Exception ex)
 			{
 				throw new PersistenciaException("Error al cerrar los archivos de escritura: ERROR: "+ex.getMessage());
