@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -205,7 +207,32 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 						Utilidades.set(singular, campo.getName(), date);
 						
 						continue;
-					}
+					}else if(columna.tipoDato() == TipoElementoDB.TIMESTAMP)//LocalDateTime
+					{
+						LocalDateTime date = null;
+						
+							
+							if(columna.formato() == null || columna.formato().isEmpty())
+							{
+								date = LocalDateTime.parse(resultadoResulset.toString());
+							}else
+							{
+								Pattern patron = Pattern.compile("(.+\\d\\:\\d+)\\.(\\d+)");//Si viene el formato yyyy-MM-dd HH:mm:ss.SSSS (no se puede mapear)
+								Matcher match = patron.matcher(resultadoResulset.toString());
+								if(match.find())
+								{
+									String fecha = match.group(1);
+									LocalDateTime ldt = LocalDateTime.parse(fecha, DateTimeFormatter.ofPattern(columna.formato()));
+									date = ldt;
+								}
+								
+							}
+							
+							Utilidades.set(singular, campo.getName(), date);
+							
+							continue;
+					}											
+			
 					
 					//Muchos
 					if(muchos == null)
@@ -346,10 +373,32 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 						Utilidades.set(singular, campo.getName(), date);
 						
 						continue;
+					}else if(columna.tipoDato() == TipoElementoDB.TIMESTAMP)//LocalDateTime
+					{
+						LocalDateTime date = null;
+						
+						if(columna.formato() == null || columna.formato().isEmpty())
+						{
+							date = LocalDateTime.parse(resultadoResulset.toString());
+						}else
+						{
+							Pattern patron = Pattern.compile("(.+\\d\\:\\d+)\\.(\\d+)");//Si viene el formato yyyy-MM-dd HH:mm:ss.SSSS (no se puede mapear)
+							Matcher match = patron.matcher(resultadoResulset.toString());
+							if(match.find())
+							{
+								String fecha = match.group(1);
+								LocalDateTime ldt = LocalDateTime.parse(fecha, DateTimeFormatter.ofPattern(columna.formato()));
+								date = ldt;
+							}
+							
+						}
+						
+						Utilidades.set(singular, campo.getName(), date);
+						
+						continue;
+						
 					}
-					
-					
-					
+															
 					//Muchos
 					if(muchos == null)
 					{
