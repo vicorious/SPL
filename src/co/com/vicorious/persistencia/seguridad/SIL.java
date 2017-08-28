@@ -149,7 +149,7 @@ public abstract class SIL
                                     temporal = temporal + Integer.parseInt(finalpass.toString());
                                     if (temporal > mapa.size()) 
                                     {
-                                        constructorcadenas.append("Â¿Â¬" + elemento2.getValue().toString());
+                                        constructorcadenas.append("¿¬" + elemento2.getValue().toString());
                                         tipooperacion = false;
                                         break;
                                     }
@@ -179,7 +179,7 @@ public abstract class SIL
                                         }
                                     } else 
                                     {
-                                        constructorcadenas.append("&Â¬" + elemento2.getKey());
+                                        constructorcadenas.append("&¬" + elemento2.getKey());
                                         tipooperacion = true;
                                     }
                                 }
@@ -224,7 +224,7 @@ public abstract class SIL
                                     temporal = temporal + Integer.parseInt(baseletra.get(finalpass).toString());
                                     if (temporal > mapa.size()) 
                                     {
-                                        constructorcadenas.append("Â¿Â¬" + elemento2.getValue().toString());
+                                        constructorcadenas.append("¿¬" + elemento2.getValue().toString());
                                         tipooperacion = false;
                                         break;
                                     }
@@ -257,7 +257,7 @@ public abstract class SIL
                                         }
                                     } else 
                                     {
-                                        constructorcadenas.append("&Â¬" + elemento2.getKey());
+                                        constructorcadenas.append("&¬" + elemento2.getKey());
                                         tipooperacion = true;
                                         break;
                                     }
@@ -288,7 +288,7 @@ public abstract class SIL
          // - , +
          // true, empieza sumando, false empieza restando
          // valor de depreciacion  )
-         // despreciacion absoluta Â¬
+         // despreciacion absoluta ¬
          int contador = 1;
          char[] cadenas = null;
          String[] cadenasfinal = null;
@@ -511,7 +511,7 @@ public abstract class SIL
                                          
                                      }else
                                      {
-                                     if (String.valueOf(cadenasfinal[i]).equals("&") && cadenasfinal[i + 1].equals("Â¬")) 
+                                     if (String.valueOf(cadenasfinal[i]).equals("&") && cadenasfinal[i + 1].equals("¬")) 
                                      {
                                          if (tipooperacion) 
                                          {
@@ -537,7 +537,7 @@ public abstract class SIL
                                      }else
                                      {
 
-                                     if (cadenasfinal[i].equals("Â¿") && cadenasfinal[i + 1].equals("Â¬") && isNumeric(cadenasfinal[i + 2])) 
+                                     if (cadenasfinal[i].equals("¿") && cadenasfinal[i + 1].equals("¬") && isNumeric(cadenasfinal[i + 2])) 
                                      {
                                          StringBuilder suma = new StringBuilder();
                                          String prueba = "";
@@ -832,7 +832,7 @@ public abstract class SIL
                                          
                                      }else
                                      {
-                                     if (String.valueOf(cadenasfinal[i]).equals("&") && cadenasfinal[i + 1].equals("Â¬")) 
+                                     if (String.valueOf(cadenasfinal[i]).equals("&") && cadenasfinal[i + 1].equals("¬")) 
                                      {
                                          if (tipooperacion) 
                                          {
@@ -858,7 +858,7 @@ public abstract class SIL
                                      }else
                                      {
 
-                                     if (cadenasfinal[i].equals("Â¿") && cadenasfinal[i + 1].equals("Â¬") && isNumeric(cadenasfinal[i + 2])) 
+                                     if (cadenasfinal[i].equals("¿") && cadenasfinal[i + 1].equals("¬") && isNumeric(cadenasfinal[i + 2])) 
                                      {
                                          StringBuilder suma = new StringBuilder();
                                          String prueba = "";
@@ -1152,7 +1152,7 @@ public abstract class SIL
      */
     private static String addHash(String cadena, String hash) 
     {
-        String cadenafinal = hash + "Â¬";
+        String cadenafinal = hash + "¬";
         for(int i = 1; i < cadena.length(); i++) {
              cadenafinal += cadena.charAt(i);
         }
@@ -1170,7 +1170,7 @@ public abstract class SIL
          int index = 1;
          
          for(int i = 0; i < cadena.length() - 1; i++) {
-            if(cadena.charAt(i) != 'Â¬') 
+            if(cadena.charAt(i) != '¬') 
                 index++;
                 else 
                 break;
@@ -1227,7 +1227,7 @@ public abstract class SIL
         letras.add("l");
         letras.add("m");
         letras.add("n");
-        letras.add("Ã±");
+        letras.add("ñ");
         letras.add("o");
         letras.add("p");
         letras.add("q");
@@ -1244,7 +1244,7 @@ public abstract class SIL
         letras.add("-");
         letras.add("?");
         letras.add("*");
-        letras.add("Â¿");
+        letras.add("¿");
         letras.add("&");
         letras.add("/");
         letras.add("@");
@@ -1252,7 +1252,7 @@ public abstract class SIL
         letras.add(",");
         letras.add("_");
         letras.add("_");
-        letras.add("Â¬");
+        letras.add("¬");
         letras.add("(");
     }//fullLetras 
 
