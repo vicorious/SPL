@@ -21,4 +21,4 @@ Framework de persistencia
 ## Implementacion:
 
 En nuestro repositorio **GIT** [SPL Git](https://github.com/vicorious/SPL/)  encontramos una carpeta con el nombre DIST
-![Image of Yaktocat](raw/images/dist.png)
+![Dist Github](/raw/images/dist.PNG)
