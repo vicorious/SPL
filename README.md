@@ -22,6 +22,7 @@ Framework de persistencia
 
 En nuestro repositorio **GIT** [SPL Git](https://github.com/vicorious/SPL/)  encontramos una carpeta con el nombre DIST
 > ![Dist Github](/raw/images/dist.PNG)
+<br />
 > encontraremos en nuestra carpeta un archivo con el nombre **SPL.jar**
 > ![SPL jar](/raw/images/SPL_jar.PNG)
 Este archivo es el que **Debemos incluir en nuestro proyecto para poder utilizar a SPL**
