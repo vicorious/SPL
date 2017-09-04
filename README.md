@@ -68,9 +68,7 @@ encontraremos una ventana como la siguiente:
 
 > ![Importar eclipse](/raw/images/importar_proyecto4.PNG)
 
-Luego vamos a darle al boton **Finish**
-
-y Nuestro proyecto esta contextualizado en eclipse:
+Luego vamos a darle al boton **Finish** y Nuestro proyecto esta contextualizado en eclipse:
 
 > ![Importar eclipse](/raw/images/importar_proyecto5.PNG)
 
