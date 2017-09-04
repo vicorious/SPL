@@ -21,17 +21,17 @@ Framework de persistencia
 ## Implementacion:
 
 En nuestro repositorio **GIT** [SPL Git](https://github.com/vicorious/SPL/)  encontramos una carpeta con el nombre DIST
-![Dist Github](/raw/images/dist.PNG)
+> ![Dist Github](/raw/images/dist.PNG)
 encontraremos en nuestra carpeta un archivo con el nombre **SPL.jar**
-![SPL jar](/raw/images/SPL_jar.PNG)
+> ![SPL jar](/raw/images/SPL_jar.PNG)
 Este archivo es el que **Debemos incluir en nuestro proyecto para poder utilizar a SPL**
 
 Si observamos nuestro jar de prueba **SPL_CLIENTE**. [GIT SPL Cliente](https://github.com/vicorious/SPL_CLIENTE)
-![SPL Pruebas](/raw/images/SPL_CLIENTE.PNG)
+> ![SPL Pruebas](/raw/images/SPL_CLIENTE.PNG)
 Observamos que existe una carpeta llamada **lib**
-![Lib SPL Pruebas](/raw/images/lib.PNG)
+> ![Lib SPL Pruebas](/raw/images/lib.PNG)
 y dentro de esta carpeta encontramos el archivo con nombre **SPL.jar**
-![SPL Jar en SPL Cliente](/raw/images/SPL_JAR_CLIENTE.PNG)
+> ![SPL Jar en SPL Cliente](/raw/images/SPL_JAR_CLIENTE.PNG)
 
 
 
