@@ -1640,6 +1640,48 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 		}
 	}//cerrarConexion
 	
+	/**
+	 * Metodo encargado de confirmar una transaccion
+	 * @throws PersistenciaException si hay error confirmando la transaccion
+	 */
+	public void cerrarTransaccion() throws PersistenciaException 
+	{
+		try
+		{
+			if(this.conexion.isPresent() && this.conexion != null)
+			{
+				this.conexion.get().commit();
+			}
+			
+		}catch(Exception ex)
+		{
+			throw new PersistenciaException("Error al confirmar la transaccion: ERROR: "+ex.getMessage());
+		}
+		
+	}//cerrarTransaccion
+
+	/**
+	 * Metodo encargado de realizar rollback o devolver una transaccion
+	 * @throws PersistenciaException si hay error confirmando la transaccion
+	 */
+	public void rollbackTransaccion() throws PersistenciaException 
+	{
+		try
+		{
+			if(this.conexion.isPresent() && this.conexion != null)
+			{
+				this.conexion.get().rollback();
+			}
+			
+		}catch(Exception ex)
+		{
+			throw new PersistenciaException("Error al confirmar la transaccion: ERROR: "+ex.getMessage());
+		}
+		
+	}//rollbackTransaccion	
+	
+	
+	
 	
 	/************************************************* GETTERS AND SETTERS **************************************************************/	
 	
@@ -1655,6 +1697,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 	public void setConexion(Optional<Connection> conexion) 
 	{
 		this.conexion = conexion;
-	}	
+	}
+
 	
 }//No borrar

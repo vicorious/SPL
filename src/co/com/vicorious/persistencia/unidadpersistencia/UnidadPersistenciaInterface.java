@@ -205,5 +205,16 @@ public interface UnidadPersistenciaInterface
 	 * @throws PersistenciaException error al cerrar la conexion
 	 */
 	public void cerrarConexion() throws PersistenciaException;	
+	
+	/**
+	 * Metodo encargado de confirmar una transaccion (commit)
+	 * @throws PersistenciaException error al cerrar la transaccion
+	 */
+	public void cerrarTransaccion() throws PersistenciaException;			
+	
+	/**
+	 * Metodo encargado de realizar rollback a la transaccion actual
+	 */
+	public void rollbackTransaccion() throws PersistenciaException;
 		
 }//No borrar
