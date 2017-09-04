@@ -46,5 +46,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UnoAMuchos 
 {
-
+	boolean lazy() default false;
 }//No borrar
