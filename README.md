@@ -2,7 +2,7 @@
 Framework de persistencia
 ## Caracteristicas:
 - Consultar Tablas *@Tabla* 
-- Capacidad de secuencias por ID.  **Ejemplo:  ** *@ID(Secuencia = 'lasecuencia')*.
+- Capacidad de secuencias por ID.  **Ejemplo:** *@ID(Secuencia = 'lasecuencia')*.
 - Consultar Tablas (_Relaciones uno a muchos_)**Ejemplo:  **  *@UnoAMuchos* .
 - Consultar Tablas (_Relaciones muchos a uno_) **Ejemplo:  ** *@MuchosAUno* .
 - Insertar en tablas.
@@ -22,3 +22,5 @@ Framework de persistencia
 
 En nuestro repositorio **GIT** [SPL Git](https://github.com/vicorious/SPL/)  encontramos una carpeta con el nombre DIST
 ![Dist Github](/raw/images/dist.PNG)
+
+
