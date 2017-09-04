@@ -173,7 +173,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					if(uno == null)
 					{
 						//Esperando
-					}else
+					}else if(uno.lazy())
 					{
 						singular = setObjectoUno(campo, singular,conexion);
 						continue;
@@ -238,7 +238,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					if(muchos == null)
 					{
 						//Esperando
-					}else
+					}else if(muchos.lazy())
 					{
 						boolean esdefault = Configuracion.getInstancia().getConfiguracionframework().esDefaultBoo();
 						Optional<?> hijomuchos = setObjetoMuchos(campo, resultadoResulset, conexion, esdefault);
