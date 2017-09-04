@@ -177,6 +177,9 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					{
 						singular = setObjectoUno(campo, singular,conexion);
 						continue;
+					}else
+					{
+						continue;
 					}
 												
 					Method metodo = resultado.getClass().getMethod("get"+columna.tipoDato().getValor().getLlave(), String.class);
@@ -244,6 +247,9 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 						Optional<?> hijomuchos = setObjetoMuchos(campo, resultadoResulset, conexion, esdefault);
 						//Optional<?> hijomuchos = setObjetoMuchos(campo, resultadoResulset, conexion, false);
 						Utilidades.set(singular, campo.getName(), hijomuchos.get());
+						continue;
+					}else
+					{
 						continue;
 					}
 															
@@ -334,9 +340,12 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					if(uno == null)
 					{
 						//Esperando
-					}else
+					}else if(uno.lazy())
 					{
 						singular = setObjectoUno(campo, singular,conexion);
+						continue;
+					}else
+					{
 						continue;
 					}
 					
@@ -403,11 +412,14 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					if(muchos == null)
 					{
 						//Esperando
-					}else
+					}else if(muchos.lazy())
 					{
 						boolean esdefault = Configuracion.getInstancia().getConfiguracionframework().esDefaultBoo();
 						Optional<?> hijomuchos = setObjetoMuchos(campo, resultadoResulset, conexion, esdefault);
 						Utilidades.set(singular, campo.getName(), hijomuchos.get());
+						continue;
+					}else
+					{
 						continue;
 					}
 					
@@ -1249,10 +1261,13 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					if(uno == null)
 					{
 						//Esperando
-					}else
+					}else if(uno.lazy())
 					{
 						Object lista = setObjectoUno(campo, objetoID ,conexion);
 						Utilidades.set(singular, campo.getName(), lista);
+						continue;
+					}else
+					{
 						continue;
 					}
 													
@@ -1264,12 +1279,15 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					if(muchos == null)
 					{
 						//Esperando
-					}else
+					}else if(muchos.lazy())
 					{
 						boolean esdefault = Configuracion.getInstancia().getConfiguracionframework().esDefaultBoo();
 						Optional<?> hijomuchos = setObjetoMuchos(campo, resultadoResulset, conexion, esdefault);
 						//Optional<?> hijomuchos = setObjetoMuchos(campo, resultadoResulset,conexion, false);
 						Utilidades.set(singular, campo.getName(), hijomuchos.get());
+						continue;
+					}else
+					{
 						continue;
 					}
 					
