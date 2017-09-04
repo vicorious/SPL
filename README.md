@@ -43,7 +43,7 @@ Estas dos versiones de los archivos **SPL.jar** deben ser iguales. para verifica
 
 > ![Cliente descargado](/raw/images/SPL_CLIENTE_DESCARGAR.PNG)
 
-una vez descomprimido, vamos a abrir nuestro **IDE Eclipse**
+Una vez descomprimido, vamos a abrir nuestro **IDE Eclipse**, 
 La version utilizada para probar el cliente y la construccion de SPL es:
 > ![Version eclipse](/raw/images/version_eclipse.PNG)
 
@@ -58,7 +58,7 @@ Elegimos la opcion **Projects from Folder or Archive** Vamos a la opcion **Sigui
 
 > ![Importar eclipse](/raw/images/importar_proyecto2.PNG)
 
-Ahora como vemos en la imagen, en la opcion *Import Source* el boton *Directory...* abrira una ventana como la siguiente:
+Ahora como vemos en la imagen, en la opcion **_Import Source_** el boton **_Directory..._** abrira una ventana como la siguiente:
 
 > ![Importar eclipse](/raw/images/importar_proyecto3.PNG)
 
@@ -83,7 +83,7 @@ se encuentra el jar para la conexion a **PostgreSQL 9.6**
 se encuentra el jar para la conexion mediante **SPL**
 
 
-
+#Disfruta!!!
  
 
 
