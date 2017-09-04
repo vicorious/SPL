@@ -29,6 +29,7 @@ encontraremos en nuestra carpeta un archivo con el nombre **SPL.jar**
 
 Este archivo es el que **Debemos incluir en nuestro proyecto para poder utilizar a SPL**
 
+##SPL Cliente
 Si observamos nuestro jar de prueba **SPL_CLIENTE**. [GIT SPL Cliente](https://github.com/vicorious/SPL_CLIENTE)
 > ![SPL Pruebas](/raw/images/SPL_CLIENTE.PNG)
 
@@ -46,20 +47,22 @@ una vez descomprimido, vamos a abrir nuestro **IDE Eclipse**
 La version utilizada para probar el cliente y la construccion de SPL es:
 > ![Version eclipse](/raw/images/version_eclipse.PNG)
 
-cuando tengamos abierto (Si necesitas descargar el IDE utilizado aqui lo expongo)
+Cuando lo tengamos abierto (Si necesitas descargar el IDE utilizado aqui lo expongo)
  [URL Descargar Eclipse](https://1drv.ms/u/s!Ap97F-3qa8F6xnkpnoYSKXxyCvj5)  
 
-Vamos a la opcion **File -> Import **
+Vamos a la opcion **File -> Import**
 
 > ![Importar eclipse](/raw/images/importar_proyecto.PNG)
+
 Elegimos la opcion **Projects from Folder or Archive** Vamos a la opcion **Siguiente**
 
 > ![Importar eclipse](/raw/images/importar_proyecto2.PNG)
+
 Ahora como vemos en la imagen, en la opcion *Import Source* el boton *Directory...* abrira una ventana como la siguiente:
 
 > ![Importar eclipse](/raw/images/importar_proyecto3.PNG)
 
-elegimos el proyecto que descargamos y vamos a **Aceptar**
+Elegimos el proyecto que descargamos y vamos a **Aceptar**
 encontraremos una ventana como la siguiente:
 
 
