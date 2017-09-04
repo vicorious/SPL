@@ -29,7 +29,7 @@ encontraremos en nuestra carpeta un archivo con el nombre **SPL.jar**
 
 Este archivo es el que **Debemos incluir en nuestro proyecto para poder utilizar a SPL**
 
-##SPL Cliente
+## SPL Cliente:
 Si observamos nuestro jar de prueba **SPL_CLIENTE**. [GIT SPL Cliente](https://github.com/vicorious/SPL_CLIENTE)
 > ![SPL Pruebas](/raw/images/SPL_CLIENTE.PNG)
 
