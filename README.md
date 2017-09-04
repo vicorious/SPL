@@ -76,10 +76,17 @@ Para verificar que nuestro proyecto esta correctamente configurado, vamos a **da
 
 > ![Importar eclipse](/raw/images/importar_proyecto6.PNG)
 
-Aqui en la opcion **Java Build Path** encontramos que tenemos como dependencias en nuestro jar **2 jar nuevos**
-se encuentra el jar para la conexion a **PostgreSQL 9.6**
-se encuentra el jar para la conexion mediante **SPL**
+Aqui en la opcion **Java Build Path** encontramos que tenemos como dependencias en nuestro jar ,**2 jar nuevos:**
+- se encuentra el jar para la conexion a **PostgreSQL 9.6**
+- se encuentra el jar para la conexion mediante **SPL**
 
+Esto es todo!
+
+Es recomendable para conocer el funcionamiento general de SPL ir a los links:
+
+
+-  [URL Documentacion tecnica](https://github.com/vicorious/SPL/tree/master/doc/doctecnica)  
+-  [URL Javadoc](https://github.com/vicorious/SPL/tree/master/doc/javadoc)  
 
 #Disfruta!!!
  
