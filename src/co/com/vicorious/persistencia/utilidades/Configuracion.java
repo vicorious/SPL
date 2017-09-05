@@ -459,7 +459,7 @@ public class Configuracion
 			//Log
 			//this.agregarLog(new MensajeTO("Termino configuracion correctamente"));
 			
-			return Optional.of(configuracion);
+			return Optional.ofNullable(configuracion);
 			
 			
 		}catch(Exception ex)
@@ -599,7 +599,7 @@ public class Configuracion
 		
 		db = resulta.isPresent() ? (BaseDatosConfigTO)resulta.get():null;						
 		
-		Optional<BaseDatosConfigTO> op = Optional.of(db);
+		Optional<BaseDatosConfigTO> op = Optional.ofNullable(db);
 		
 		return op;
 		

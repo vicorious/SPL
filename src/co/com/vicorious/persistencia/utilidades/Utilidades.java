@@ -361,7 +361,7 @@ public abstract class Utilidades
 				
 				try
 				{
-					valor = Optional.of(parametros.get(columnaAnotacion.nombre()));
+					valor = Optional.ofNullable(parametros.get(columnaAnotacion.nombre()));
 					camposDB.append(columnaAnotacion.nombre());
 					camposDB.append(",");
 				}catch(NullPointerException ex)
@@ -826,7 +826,7 @@ public abstract class Utilidades
 				//Preguntamos si encontramos en la columna actual un valor "DEFAULT"
 				Optional<Entry<TipoElementoDB, String>> columnano =  defaults.entrySet().stream().filter(p -> p.getKey() == columnaAnotacion.tipoDato()).findFirst();
 				
-				if(columnano.isPresent() && valorObjeto.equals(columnano.get().getValue()))continue;
+				if(columnano.isPresent() && (valorObjeto != null && valorObjeto.toString().equals(columnano.get().getValue())))continue;
 				
 				
 				if(valorObjeto == null)
@@ -998,7 +998,7 @@ public abstract class Utilidades
 				//Preguntamos si encontramos en la columna actual un valor "DEFAULT"
 				if(Configuracion.getInstancia().getConfiguracionframework().esDefaultBoo() && !campo.isAnnotationPresent(ID.class))
 				{
-					Optional<Entry<TipoElementoDB, String>> columnano =  Configuracion.getInstancia().defaults().entrySet().stream().filter(p -> p.getKey() == columna.tipoDato() && resultado.toString().equalsIgnoreCase(p.getValue())).findFirst();	
+					Optional<Entry<TipoElementoDB, String>> columnano =  Configuracion.getInstancia().defaults().entrySet().stream().filter(p -> p.getKey() == columna.tipoDato() && (resultado != null && resultado.toString().equalsIgnoreCase(p.getValue()))).findFirst();	
 					if(columnano.isPresent())
 						continue;
 				}								
@@ -1115,7 +1115,7 @@ public abstract class Utilidades
 				{				
 					//	Preguntamos si encontramos en la columna actual un valor "DEFAULT"
 					Optional<Entry<TipoElementoDB, String>> columnano =  defaults.entrySet().stream().filter(p -> p.getKey() == columna.tipoDato()).findFirst();
-					if(columnano.isPresent() && resultado.equals(columnano.get().getValue()))continue;					
+					if(columnano.isPresent() && (resultado != null && resultado.toString().equals(columnano.get().getValue())))continue;					
 				}
 				
 				
@@ -1223,20 +1223,7 @@ public abstract class Utilidades
 				throw new PersistenciaException("El objeto debe pertenecer a una entidad con la etiqueta TABLA");
 			}
 			
-			Optional<Field> opcional = Arrays.asList(entidad.getClass().getDeclaredFields()).stream().filter(p -> p.isAnnotationPresent(ID.class)).findFirst();
 			
-			if(opcional.isPresent())
-			{
-				Field campo = opcional.get();
-				Object valor = Utilidades.get(entidad, campo.getName());
-				Columna column = campo.getAnnotation(Columna.class);
-				String formato = column.tipoDato().getValor().getFormato();
-				where.append(ConstantesSQL.SQL_WHERE);
-				where.append(column.nombre());
-				where.append(" = ");
-				where.append(formato).append(valor).append(formato);				
-				tieneprimary = true;
-			}
 			sql.append(ConstantesSQL.SQL_UPDATE);		
 			sql.append(tabla.nombre());		
 			for(Field campo: clase.getDeclaredFields())
@@ -1249,10 +1236,56 @@ public abstract class Utilidades
 				}														
 				Columna columna = campo.getAnnotation(Columna.class);
 				
+				//Columna no where
 				Optional<String> columnano =  Arrays.asList(columnanowhere).stream().filter(p -> p.equalsIgnoreCase(columna.nombre())).findFirst();
-				if(columnano.isPresent())continue;
+				if(columnano.isPresent())continue;				
 				
-				Object resultado = Utilidades.get(entidad, campo.getName());
+				Object resultado = Utilidades.get(entidad, campo.getName());		
+				
+				if(campo.isAnnotationPresent(MuchosAUno.class))//Si es muchos a uno, vamos y traemos el valor de su ID
+				{	
+					if(resultado.getClass().isAnnotationPresent(Tabla.class))
+					{
+						Optional<Field> a = Arrays.stream(resultado.getClass().getDeclaredFields()).filter(p -> p.isAnnotationPresent(ID.class)).findFirst();
+						if(!a.isPresent()) throw new PersistenciaException("El campo: "+campo.getName()+" Debe tener una columna ID para poder relacionarla, intente de nuevo");
+						resultado = Utilidades.get(resultado, a.get().getName());
+					}else
+					{
+						throw new PersistenciaException("La clase: "+resultado.getClass().getName()+" No es una entidad, por favor intente con una entidad");
+					}
+				}
+				
+				//Defaults
+				if(Configuracion.getInstancia().getConfiguracionframework().esDefaultBoo())
+				{				
+					//	Preguntamos si encontramos en la columna actual un valor "DEFAULT"
+					Optional<Entry<TipoElementoDB, String>> defa =  Configuracion.getInstancia().getDefaults().entrySet().stream().filter(p -> p.getKey() == columna.tipoDato()).findFirst();
+					if(defa.isPresent())
+					{
+						Object valor = defa.get().getValue();
+						if (resultado != null && resultado.toString().equals(valor))
+						{
+							continue;	
+						}
+										
+					}
+				}
+				
+				Optional<Field> opcional = Arrays.asList(entidad.getClass().getDeclaredFields()).stream().filter(p -> p.isAnnotationPresent(ID.class)).findFirst();
+				
+				if(opcional.isPresent() && !tieneprimary)
+				{
+					Field campo2 = opcional.get();
+					Object valor = Utilidades.get(entidad, campo2.getName());
+					Columna column = campo2.getAnnotation(Columna.class);
+					String formato = column.tipoDato().getValor().getFormato();
+					where.append(ConstantesSQL.SQL_WHERE);
+					where.append(column.nombre());
+					where.append(" = ");
+					where.append(formato).append(valor).append(formato);				
+					tieneprimary = true;
+				}
+				
 							
 				if(resultado != null)
 				{
@@ -1346,7 +1379,7 @@ public abstract class Utilidades
 				//Preguntamos si encontramos en la columna actual un valor "DEFAULT"
 				Optional<Entry<TipoElementoDB, String>> columnano =  defaults.entrySet().stream().filter(p -> p.getKey() == columna.tipoDato()).findFirst();
 				
-				if(columnano.isPresent() && resultado.equals(columnano.get().getValue()))continue;
+				if(columnano.isPresent() && (resultado != null && resultado.toString().equals(columnano.get().getValue())))continue;
 							
 				if(resultado != null)
 				{
@@ -1510,7 +1543,7 @@ public abstract class Utilidades
 			 {
 				 Field campo = campop.get();
 				 Columna columnap = campo.getAnnotation(Columna.class);
-				 columna = Optional.of(columnap);
+				 columna = Optional.ofNullable(columnap);
 			 }
 			 return columna;
 		}//getColumnas

@@ -108,7 +108,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 		
 		resultadoPredicate = (List<Object>) resultadoSelect.stream().filter(predicado).collect(Collectors.toList());
 		
-		Optional<List<Object>> resultadoop = Optional.of(resultadoPredicate);
+		Optional<List<Object>> resultadoop = Optional.ofNullable(resultadoPredicate);
 		
 		super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 		
@@ -258,7 +258,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 				}
 				resultadoSelect.add(singular);
 			}			
-			resultadop = Optional.of(resultadoSelect);
+			resultadop = Optional.ofNullable(resultadoSelect.size() == 0 ? null : resultadoSelect);
 			
 		}catch(Exception ex)
 		{
@@ -299,7 +299,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 		List<Object> resultadoSelect =  new ArrayList<Object>();
 		Statement sentencia = null;
 		ResultSet resultado = null;
-		Optional<List<Object>> opcional = null; 
+		Optional<Object> opcional = null; 
 		String campoactual = new String();
 		
 		Connection conexion = null; 		
@@ -429,7 +429,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 				resultadoSelect.add(singular);
 			}
 			
-			opcional = Optional.of(resultadoSelect);
+			opcional = Optional.ofNullable(resultadoSelect.size() == 0 ? null : resultadoSelect);
 			super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo2));
 			
 			return opcional;
@@ -785,7 +785,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 			}
 						
 			
-			opcional = Optional.of(salida);
+			opcional = Optional.ofNullable(salida);
 			
 			super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 			
@@ -930,7 +930,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 			}
 			
 									
-			opcional = Optional.of(funcion);
+			opcional = Optional.ofNullable(funcion);
 			
 			super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 			
@@ -1031,7 +1031,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 				super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_ERRONEO_METODO, true, nombremetodo, mensaje));
 				throw new PersistenciaException(mensaje);
 			}
-			resultadop = Optional.of(hija);
+			resultadop = Optional.ofNullable(hija);
 			
 			super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 			
@@ -1120,7 +1120,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 					 
 			}
 		 }
-		 Optional<?> resultado = Optional.of(objetoIDPadre);
+		 Optional<?> resultado = Optional.ofNullable(objetoIDPadre);
 		 
 		 super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 		 
@@ -1181,7 +1181,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 				Utilidades.set(objeto, campohija.getName(), resultadoR);
 			
 			}
-			entidadop = Optional.of(objeto);
+			entidadop = Optional.ofNullable(objeto);
 			
 			super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 			
@@ -1220,7 +1220,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 		List<Object> resultadoSelect =  new ArrayList<Object>();
 		Statement sentencia = null;
 		ResultSet resultado = null;
-		Optional<List<Object>> opcional = null; 
+		Optional<Object> opcional = null; 
 		
 		Connection conexion = null; 
 		Optional<Connection> conexionp = Configuracion.getInstancia().getConexion();
@@ -1296,7 +1296,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 				}
 				resultadoSelect.add(singular);
 			}			
-			opcional = Optional.of(resultadoSelect);
+			opcional = Optional.ofNullable(resultadoSelect.size() == 0 ? null : resultadoSelect);
 			
 			super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 			
@@ -1334,7 +1334,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 		List<Object> resultadoSelect =  new ArrayList<Object>();
 		Statement sentencia = null;
 		ResultSet resultado = null;
-		Optional<List<Object>> opcional = null; 
+		Optional<Object> opcional = null; 
 		
 		Connection conexion = pconexion;
 		try
@@ -1371,7 +1371,7 @@ public class UnidadPersistencia extends Logueable implements UnidadPersistenciaI
 				}
 				resultadoSelect.add(singular);
 			}	
-			opcional = Optional.of(resultadoSelect);
+			opcional = Optional.ofNullable(resultadoSelect.size() == 0 ? null : resultadoSelect);
 			
 			super.loguear(super.getMensaje(ConstantesMensajes.MENSAJE_FINAL_METODO, false, nombremetodo));
 			

@@ -69,11 +69,11 @@ public abstract class Conexion
 			StringBuilder cadenaconexion = SQL.getCadenaConexionJDBC(configuracion, credenciales);
 			Connection nuevaconexion = DriverManager.getConnection(cadenaconexion.toString());	
 			nuevaconexion.setAutoCommit(Configuracion.getInstancia().getConfiguracionframework().getAutoCommitBoo());
-			Configuracion.getInstancia().setConexion(Optional.of(nuevaconexion));
+			Configuracion.getInstancia().setConexion(Optional.ofNullable(nuevaconexion));
 						
 			Logueable.logueo(nombremetodo, ConstantesMensajes.MENSAJE_FINAL_METODO);
 
-			return Optional.of(nuevaconexion);
+			return Optional.ofNullable(nuevaconexion);
 		} catch (SQLException | ClassNotFoundException e) 
 		{
 			throw new PersistenciaException("crearConexion error: "+e.getMessage());			
@@ -107,11 +107,11 @@ public abstract class Conexion
 			
 			Connection conexion = DriverManager.getConnection(cadenaConexion.toString());
 			conexion.setAutoCommit(Configuracion.getInstancia().getConfiguracionframework().getAutoCommitBoo());
-			Configuracion.getInstancia().setConexion(Optional.of(conexion));
+			Configuracion.getInstancia().setConexion(Optional.ofNullable(conexion));
 			
 			Logueable.logueo(nombremetodo, ConstantesMensajes.MENSAJE_FINAL_METODO);			
 			
-			return Optional.of(conexion);
+			return Optional.ofNullable(conexion);
 			
 		}catch(Exception ex)
 		{
@@ -140,11 +140,11 @@ public abstract class Conexion
 			DataSource dataso = data.isPresent() ? (DataSource)data.get() : null;
 			conexion = dataso.getConnection();
 			conexion.setAutoCommit(Configuracion.getInstancia().getConfiguracionframework().getAutoCommitBoo());
-			Configuracion.getInstancia().setConexion(Optional.of(conexion));
+			Configuracion.getInstancia().setConexion(Optional.ofNullable(conexion));
 			
 			Logueable.logueo(nombremetodo, ConstantesMensajes.MENSAJE_FINAL_METODO);
 			
-			return Optional.of(conexion);
+			return Optional.ofNullable(conexion);
 		}catch(Exception ex)
 		{
 			throw new PersistenciaException("Error al obtener el datasource: "+datasource+" Error: "+ex.getMessage());
@@ -183,11 +183,11 @@ public abstract class Conexion
 			
 			Connection conexion = DriverManager.getConnection(cadenaConexion.toString());
 			conexion.setAutoCommit(Configuracion.getInstancia().getConfiguracionframework().getAutoCommitBoo());
-			Configuracion.getInstancia().setConexion(Optional.of(conexion));
+			Configuracion.getInstancia().setConexion(Optional.ofNullable(conexion));
 			
 			Logueable.logueo(nombremetodo, ConstantesMensajes.MENSAJE_FINAL_METODO);
 			
-			return Optional.of(conexion);
+			return Optional.ofNullable(conexion);
 			
 		}catch(Exception ex)
 		{
@@ -226,7 +226,7 @@ public abstract class Conexion
 			
 		}
 		
-		resultado = Optional.of(objeto);
+		resultado = Optional.ofNullable(objeto);
 		
 		Logueable.logueo(nombremetodo, ConstantesMensajes.MENSAJE_FINAL_METODO);
 		
@@ -266,7 +266,7 @@ public abstract class Conexion
 			
 		}
 		
-		resultado = Optional.of(objeto);
+		resultado = Optional.ofNullable(objeto);
 		
 		Logueable.logueo(nombremetodo, ConstantesMensajes.MENSAJE_FINAL_METODO);
 		
